@@ -1,0 +1,4 @@
+:root {
+  --padding: var(--size-4);
+  --padding-lg: var(--size-7);
+}
