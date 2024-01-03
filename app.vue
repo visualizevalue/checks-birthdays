@@ -3,8 +3,6 @@
     <AppHeader />
 
     <section>
-      <h1>One Year of Checks</h1>
-
       <SignatureStats />
       <SignatureDetail />
 
@@ -41,11 +39,6 @@ main > section {
   background: var(--gray-z-0);
   box-shadow: var(--shadow);
   margin: 0 auto;
-
-  > h1 {
-    padding: var(--padding-lg) var(--padding-lg) var(--padding);
-    font-size: var(--font-lg);
-  }
 
   :deep(> aside) {
     &:first-of-type {

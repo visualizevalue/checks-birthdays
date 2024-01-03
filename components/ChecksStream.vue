@@ -23,6 +23,6 @@ const activate = (signature) => {
   display: grid;
   grid-template-columns: repeat(8, minmax(0, 1fr));
   gap: var(--padding);
-  padding: var(--padding) calc(var(--padding-lg) - var(--size-1)) var(--padding);
+  padding: calc(var(--padding-lg) - var(--size-1)) calc(var(--padding-lg) - var(--size-1)) var(--padding);
 }
 </style>
