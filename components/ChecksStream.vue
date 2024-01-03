@@ -4,11 +4,18 @@
       v-for="(signature, index) in signatures"
       :key="index"
       :signature="signature"
+      :active="activeSignature?.cid === signature.cid"
+      @click="() => activate(signature)"
     />
   </div>
 </template>
 
 <script setup>
+import { activeSignature } from '~/utils/signatures'
+
+const activate = (signature) => {
+  activeSignature.value = signature
+}
 </script>
 
 <style lang="postcss" scoped>

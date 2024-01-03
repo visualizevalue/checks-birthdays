@@ -1,10 +1,9 @@
 <template>
-  <ListCard>
+  <ListCard v-if="activeSignature">
     <Icon type="check" />
 
-    <p>{{ ens }}</p>
+    <p><Address :address="activeSignature?.signer" /></p>
     <p>{{ mintCount }} mints</p>
-    <p>{{ signatureCount }} signatures</p>
     <p>
       {{ migrationCount }} migrations
 
@@ -15,7 +14,8 @@
 </template>
 
 <script setup>
-const ens = computed(() => `schmrypto.eth`)
+import { activeSignature } from '~/utils/signatures'
+
 const mintCount = ref(551)
 const migrationCount = ref(404)
 const compositeCount = ref(330)

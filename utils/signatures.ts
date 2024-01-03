@@ -37,6 +37,7 @@ export const signChecksBirthday = async (subject: string) =>
 export const signaturesLoading = ref(false)
 export const signatures = ref([])
 export const totalSignaturesCount = ref(0)
+export const activeSignature = ref(null)
 
 export const useSignatures = () => {
   const config = useRuntimeConfig()
