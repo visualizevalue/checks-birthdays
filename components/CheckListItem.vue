@@ -27,7 +27,7 @@ div {
   &.active {
     box-shadow: var(--shadow);
     border: var(--border-dark);
-    transform: scale(1.4) rotate(360deg);
+    transform: scale(1.618) rotate(360deg);
   }
 
   .icon {

@@ -1,19 +1,33 @@
 <template>
-  <div class="checks-stream">
-    <Loading v-if="signaturesLoading" />
-
-    <CheckListItem
-      v-for="signature in signatures"
-      :key="signature.cid"
-      :signature="signature"
-      :active="activeSignature?.cid === signature.cid"
-      @click="() => activate(signature)"
-    />
-  </div>
+  <ClientOnly>
+    <PaginatedContent :url="url" :query="query" :refresh-key="refreshKey" class="checks-stream">
+      <template v-slot="{ items }">
+        <TransitionGroup name="fade">
+          <CheckListItem
+            v-for="signature in items"
+            :key="signature.cid"
+            :signature="signature"
+            :active="activeSignature?.cid === signature.cid"
+            @click="() => activate(signature)"
+          />
+        </TransitionGroup>
+      </template>
+      <template #loading>
+        <Loading />
+      </template>
+    </PaginatedContent>
+  </ClientOnly>
 </template>
 
 <script setup>
-import { activeSignature, signaturesLoading } from '~/utils/signatures'
+import { activeSignature, QUERY_FILTERS } from '~/utils/signatures'
+
+defineProps({
+  refreshKey: Number,
+})
+const config = useRuntimeConfig()
+const url = `${config.public.signatureApi}/signatures`
+const query = `${QUERY_FILTERS}&limit=80`
 
 const activate = (signature) => {
   activeSignature.value = signature
@@ -27,7 +41,7 @@ const activate = (signature) => {
   gap: var(--padding);
   padding: calc(var(--padding-lg) - var(--size-1)) calc(var(--padding-lg) - var(--size-1)) var(--padding);
 
-  .loading {
+  :deep(.loading) {
     grid-column: 1 / -1;
   }
 }

@@ -10,15 +10,14 @@
       Check In to Sign
     </div>
 
-    <CreateSignatureButton @signed="load" />
+    <CreateSignatureButton @signed="emit('signed')" />
   </footer>
 </template>
 
 <script setup>
 const { address, isConnected } = useAccount()
-const { load } = useSignatures()
 
-const sign = () => sign
+const emit = defineEmits(['signed'])
 </script>
 
 <style lang="postcss" scoped>

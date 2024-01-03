@@ -6,9 +6,9 @@
       <SignatureStats />
       <SignatureDetail />
 
-      <ChecksStream />
+      <ChecksStream :refresh-key="refreshKey" />
 
-      <CreateSignature />
+      <CreateSignature @signed="refreshKey ++" />
     </section>
   </main>
 </template>
@@ -16,6 +16,8 @@
 <script setup>
 import '~/styles/index.css'
 const { load } = useSignatures()
+
+const refreshKey = ref(1)
 
 onMounted(() => load())
 </script>
@@ -42,8 +44,6 @@ main > section {
 
   :deep(> aside) {
     &:first-of-type {
-      margin-top: var(--padding);
-
       @media (--lg) {
         margin-top: 0;
       }

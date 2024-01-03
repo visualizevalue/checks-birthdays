@@ -1,7 +1,9 @@
 import { signTypedData, type SignTypedDataArgs } from '@wagmi/core'
+import { EDITION_COLORS } from './colors'
 
 export const ACTION = 'sign'
 export const OBJECT = 'https://birthday.checks.art'
+export const QUERY_FILTERS = `filters%5Bobject%5D=${OBJECT}&filters%5Baction%5D=%26sign`
 
 // FIXME: Extract into a library
 export const notabilityCheck712Definition = (subject: string[], action: string, object: string): SignTypedDataArgs => {
@@ -42,9 +44,8 @@ export const activeSignature = ref(null)
 export const useSignatures = () => {
   const config = useRuntimeConfig()
 
-  const object = `https://birthday.checks.art`
-  const pageSize = 1000
-  const query = `filters%5Bobject%5D=${object}&filters%5Bobject%5D=${object}/&filters%5Baction%5D=%26sign&limit=${pageSize}`
+  const pageSize = 1
+  const query = `${QUERY_FILTERS}&limit=${pageSize}`
 
   const load = async () => {
     signaturesLoading.value = true
@@ -70,10 +71,9 @@ export const useSignatures = () => {
   }
 }
 
-export const addressToChecksColor = (address) => {
+export const addressToChecksColor = (address: string) => {
   const hexNumber = BigInt(address)
-  const checksEditionColorIndex = hexNumber % 80n
+  const checksEditionColorIndex = Number(hexNumber % 80n)
 
-  // @ts-ignore
   return EDITION_COLORS[checksEditionColorIndex]
 }
