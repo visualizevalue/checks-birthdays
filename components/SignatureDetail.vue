@@ -1,13 +1,13 @@
 <template>
   <ListCard v-if="activeSignature">
-    <Icon type="check" />
+    <Icon type="check" :style="{ color: addressToChecksColor(activeSignature.signer) }" />
 
     <p><Address :address="activeSignature?.signer" /></p>
     <p>{{ mintCount }} mints</p>
     <p>
       {{ migrationCount }} migrations
 
-      <span class="muted">Day {{ firstMigrationDay }}</span>
+      <span v-if="migrationCount" class="muted">Day {{ firstMigrationDay }}</span>
     </p>
     <p>{{ compositeCount }} composites</p>
   </ListCard>
@@ -16,10 +16,25 @@
 <script setup>
 import { activeSignature } from '~/utils/signatures'
 
-const mintCount = ref(551)
-const migrationCount = ref(404)
-const compositeCount = ref(330)
-const firstMigrationDay = ref(1)
+const config = useRuntimeConfig()
+const accountStats = ref(null)
+
+watch(() => activeSignature.value?.signer, async () => {
+  accountStats.value = null
+
+  try {
+    accountStats.value = await $fetch(
+      `${config.public.checksApi}/accounts/${activeSignature.value.signer.toLowerCase()}/stats`
+    )
+  } catch (e) {
+    //
+  }
+})
+
+const mintCount = computed(() => accountStats.value?.numberOfMints || 0)
+const migrationCount = computed(() => accountStats.value?.numberOfMigrations || 0)
+const compositeCount = computed(() => accountStats.value?.numberOfComposites || 0)
+const firstMigrationDay = computed(() => accountStats.value?.firstMigrationDay || false)
 </script>
 
 <style lang="postcss" scoped>
