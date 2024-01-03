@@ -43,8 +43,14 @@ main > section {
   margin: 0 auto;
 
   > h1 {
-    padding: var(--padding-lg);
+    padding: var(--padding-lg) var(--padding-lg) var(--padding);
     font-size: var(--font-lg);
+  }
+
+  :deep(> aside) {
+    &:last-of-type {
+      margin-bottom: var(--padding-lg);
+    }
   }
 }
 </style>

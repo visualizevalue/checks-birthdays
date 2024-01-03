@@ -39,6 +39,8 @@ const firstMigrationDay = computed(() => accountStats.value?.firstMigrationDay |
 
 <style lang="postcss" scoped>
 aside {
+  display: none;
+
   > .icon:first-child {
     position: absolute;
     width: var(--size-6);
@@ -48,6 +50,7 @@ aside {
   }
 
   @media (--lg) {
+    display: block;
     position: fixed;
     right: var(--padding-lg);
     width: calc((100vw - var(--main-content-max-width)) / 2 - var(--padding-lg) * 2);

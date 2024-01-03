@@ -1,5 +1,5 @@
 <template>
-  <aside @click.stop.prevent="sign" :class="{ connected: isConnected }">
+  <footer @click.stop.prevent="sign" :class="{ connected: isConnected }">
     <Icon type="check" :style="{ color: isConnected && addressToChecksColor(address) }" />
 
     <div v-if="isConnected">
@@ -11,7 +11,7 @@
     </div>
 
     <CreateSignatureButton @signed="load" />
-  </aside>
+  </footer>
 </template>
 
 <script setup>
@@ -22,7 +22,7 @@ const sign = () => sign
 </script>
 
 <style lang="postcss" scoped>
-aside {
+footer {
   margin-top: auto;
   border-top: var(--border-dark);
   color: var(--gray-z-4);
