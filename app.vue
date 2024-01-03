@@ -6,6 +6,7 @@
       <h1>One Year of Checks</h1>
 
       <SignatureStats />
+      <SignatureDetail />
 
       <ChecksStream />
 

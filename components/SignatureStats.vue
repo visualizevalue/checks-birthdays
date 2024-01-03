@@ -1,8 +1,8 @@
 <template>
-  <aside>
+  <ListCard>
     <p>{{ signatureCount }} signatures</p>
     <p><CountDown :until="ORIGINALS_DEPLOYMENT_ANNIVERSARY" class="inline" /> left</p>
-  </aside>
+  </ListCard>
 </template>
 
 <script setup>
@@ -11,19 +11,7 @@ const signatureCount = ref(324)
 </script>
 
 <style lang="postcss" scoped>
-
 aside {
-  border: var(--border-dark);
-  background: var(--gray-z-0);
-
-  p {
-    padding: calc(var(--padding)/2) var(--padding-lg);
-
-    &:not(:last-child) {
-      border-bottom: var(--border-dark);
-    }
-  }
-
   @media (--lg) {
     position: fixed;
     left: var(--padding-lg);
