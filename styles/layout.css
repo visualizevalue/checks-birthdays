@@ -1,0 +1,4 @@
+body {
+  background: var(--editions-gray-bg);
+  min-height: 100vh;
+}
