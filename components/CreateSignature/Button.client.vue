@@ -30,7 +30,7 @@
 </template>
 
 <script setup>
-import { ACTION, OBJECT } from '~/utils/sign'
+import { ACTION, OBJECT } from '~/utils/signatures'
 
 const config = useRuntimeConfig()
 const emit = defineEmits(['signed'])
