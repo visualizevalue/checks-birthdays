@@ -51,6 +51,7 @@ form {
       padding: var(--padding) var(--padding) var(--padding) calc(var(--padding) + var(--size-8));
       width: 100%;
       height: 100%;
+      border-right: var(--border-dark);
     }
   }
 }

@@ -5,6 +5,8 @@
     <section>
       <h1>One Year of Checks</h1>
 
+      <SignatureStats />
+
       <ChecksStream />
 
       <CreateSignature />
@@ -31,8 +33,8 @@ main > section {
   flex-direction: column;
   height: 100%;
   width: 100%;
-  width: calc(100vw - var(--padding)*2);
-  max-width: 25rem;
+  width: var(--main-content-width);
+  max-width: var(--main-content-max-width);
   flex-grow: 1;
   background: var(--gray-z-0);
   box-shadow: var(--shadow);
