@@ -1,16 +1,18 @@
 <template>
-  <ListCard v-if="activeSignature">
-    <Icon type="check" :style="{ color: addressToChecksColor(activeSignature.signer) }" />
+  <Transition name="fade" mode="out-in">
+    <ListCard v-if="activeSignature" :key="activeSignature.cid">
+      <Icon type="check" :style="{ color: addressToChecksColor(activeSignature.signer) }" />
 
-    <p><Address :address="activeSignature?.signer" /></p>
-    <p>{{ mintCount }} mints</p>
-    <p>
-      {{ migrationCount }} migrations
+      <p><Address :address="activeSignature?.signer" /></p>
+      <p>{{ mintCount }} mints</p>
+      <p>
+        {{ migrationCount }} migrations
 
-      <span v-if="migrationCount" class="muted">Day {{ firstMigrationDay }}</span>
-    </p>
-    <p>{{ compositeCount }} composites</p>
-  </ListCard>
+        <span v-if="migrationCount" class="muted">Day {{ firstMigrationDay }}</span>
+      </p>
+      <p>{{ compositeCount }} composites</p>
+    </ListCard>
+  </Transition>
 </template>
 
 <script setup>

@@ -1,5 +1,7 @@
 <template>
   <div class="checks-stream">
+    <Loading v-if="signaturesLoading" />
+
     <CheckListItem
       v-for="signature in signatures"
       :key="signature.cid"
@@ -11,7 +13,7 @@
 </template>
 
 <script setup>
-import { activeSignature } from '~/utils/signatures'
+import { activeSignature, signaturesLoading } from '~/utils/signatures'
 
 const activate = (signature) => {
   activeSignature.value = signature
@@ -24,5 +26,9 @@ const activate = (signature) => {
   grid-template-columns: repeat(8, minmax(0, 1fr));
   gap: var(--padding);
   padding: calc(var(--padding-lg) - var(--size-1)) calc(var(--padding-lg) - var(--size-1)) var(--padding);
+
+  .loading {
+    grid-column: 1 / -1;
+  }
 }
 </style>

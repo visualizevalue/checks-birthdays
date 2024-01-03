@@ -34,7 +34,7 @@ export const notabilityCheck712Definition = (subject: string[], action: string, 
 export const signChecksBirthday = async (subject: string) =>
   await signTypedData(notabilityCheck712Definition([subject], ACTION, OBJECT))
 
-export const signaturesLoading = ref(false)
+export const signaturesLoading = ref(true)
 export const signatures = ref([])
 export const totalSignaturesCount = ref(0)
 export const activeSignature = ref(null)

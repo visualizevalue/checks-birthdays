@@ -1,12 +1,14 @@
 <template>
-  <ListCard>
-    <p>{{ totalSignaturesCount }} signatures</p>
-    <p>
-      <CountDown :until="ORIGINALS_DEPLOYMENT_ANNIVERSARY" class="inline">
-        left
-      </CountDown>
-    </p>
-  </ListCard>
+  <Transition name="fade" appear>
+    <ListCard v-if="! signaturesLoading">
+      <p>{{ totalSignaturesCount }} signatures</p>
+      <p>
+        <CountDown :until="ORIGINALS_DEPLOYMENT_ANNIVERSARY" class="inline">
+          left
+        </CountDown>
+      </p>
+    </ListCard>
+  </Transition>
 </template>
 
 <script setup>
