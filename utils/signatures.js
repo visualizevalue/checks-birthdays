@@ -7,7 +7,7 @@ export const useSignatures = () => {
 
   const object = `https://birthday.checks.art`
   const pageSize = 1000
-  const query = `filters%5Bobject%5D=${object}&limit=${pageSize}`
+  const query = `filters%5Bobject%5D=${object}&filters%5Bobject%5D=${object}/&limit=${pageSize}`
 
   const load = async () => {
     signaturesLoading.value = true
@@ -27,4 +27,11 @@ export const useSignatures = () => {
     signaturesLoading,
     load,
   }
+}
+
+export const addressToChecksColor = (address) => {
+  const hexNumber = BigInt(address)
+  const checksEditionColorIndex = hexNumber % 80n
+
+  return EDITION_COLORS[checksEditionColorIndex]
 }

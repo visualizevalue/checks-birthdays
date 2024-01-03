@@ -9,9 +9,7 @@ const { signature } = defineProps({
   signature: Object,
 })
 
-const hexNumber = computed(() => BigInt(signature.signer))
-const checksEditionColorIndex = computed(() => hexNumber.value % 80n)
-const checksEditionColor = computed(() => EDITION_COLORS[checksEditionColorIndex.value])
+const checksEditionColor = computed(() => addressToChecksColor(signature.signer))
 </script>
 
 <style lang="postcss" scoped>

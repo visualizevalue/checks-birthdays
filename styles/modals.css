@@ -1,0 +1,13 @@
+dialog {
+  border: var(--border-dark);
+  box-shadow: var(--shadow);
+
+  > header {
+    text-align: center;
+    border-bottom: var(--border-dark);
+  }
+
+  > header + section {
+    background: var(--background);
+  }
+}
