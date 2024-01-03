@@ -16,9 +16,12 @@ const ORIGINALS_DEPLOYMENT_ANNIVERSARY = 1707771600
 <style lang="postcss" scoped>
 aside {
   @media (--lg) {
+    --side: calc((100vw - var(--main-content-max-width)) / 2 - var(--padding-lg) * 2);
+
     position: fixed;
-    left: var(--padding-lg);
-    width: calc((100vw - var(--main-content-max-width)) / 2 - var(--padding-lg) * 2);
+    width: var(--side);
+    max-width: var(--main-content-max-width);
+    right: calc(var(--side) + var(--main-content-max-width) + var(--padding-lg)*3);
     box-shadow: var(--shadow);
   }
 }

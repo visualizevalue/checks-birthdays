@@ -50,10 +50,13 @@ aside {
   }
 
   @media (--lg) {
+    --side: calc((100vw - var(--main-content-max-width)) / 2 - var(--padding-lg) * 2);
+
     display: block;
     position: fixed;
-    right: var(--padding-lg);
-    width: calc((100vw - var(--main-content-max-width)) / 2 - var(--padding-lg) * 2);
+    width: var(--side);
+    max-width: var(--main-content-max-width);
+    left: calc(var(--side) + var(--main-content-max-width) + var(--padding-lg)*3);
     box-shadow: var(--shadow);
   }
 }
