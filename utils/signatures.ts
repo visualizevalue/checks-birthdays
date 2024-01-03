@@ -52,6 +52,10 @@ export const useSignatures = () => {
       const response: any = await $fetch(`${config.public.signatureApi}/signatures?${query}`)
       signatures.value = response.data
       totalSignaturesCount.value = response.meta.total
+
+      if (! activeSignature.value) {
+        activeSignature.value = signatures.value[0]
+      }
     } catch (e) {
       //
     }
