@@ -2,9 +2,13 @@
   <header>
     <Icon type="check" />
 
-    <Connect />
+    <Connect :wallet-connect-project-id="config.public.walletConnectProjectId" :rpc="config.public.rpc" />
   </header>
 </template>
+
+<script setup>
+const config = useRuntimeConfig()
+</script>
 
 <style lang="postcss" scoped>
 header {
