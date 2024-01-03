@@ -48,6 +48,14 @@ main > section {
   }
 
   :deep(> aside) {
+    &:first-of-type {
+      margin-top: var(--padding);
+
+      @media (--lg) {
+        margin-top: 0;
+      }
+    }
+
     &:last-of-type {
       margin-bottom: var(--padding-lg);
     }
