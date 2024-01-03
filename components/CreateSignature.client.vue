@@ -28,7 +28,9 @@ aside {
   color: var(--gray-z-4);
   display: flex;
   align-items: center;
-  position: relative;
+  position: sticky;
+  bottom: 0;
+  background: var(--background);
   gap: var(--size-4);
   padding: 0 0 0 var(--padding);
 
