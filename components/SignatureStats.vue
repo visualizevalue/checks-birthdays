@@ -1,6 +1,6 @@
 <template>
   <ListCard>
-    <p>{{ signatureCount }} signatures</p>
+    <p>{{ totalSignaturesCount }} signatures</p>
     <p>
       <CountDown :until="ORIGINALS_DEPLOYMENT_ANNIVERSARY" class="inline">
         left
@@ -11,7 +11,6 @@
 
 <script setup>
 const ORIGINALS_DEPLOYMENT_ANNIVERSARY = 1707771600
-const signatureCount = ref(324)
 </script>
 
 <style lang="postcss" scoped>

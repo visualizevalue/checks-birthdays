@@ -3,7 +3,7 @@ export default defineNuxtConfig({
   devtools: { enabled: true },
   runtimeConfig: {
     public: {
-      api: '',
+      signatureApi: 'https://api.signature.vv.xyz/v1',
       rpc: 'http://127.0.0.1:8545',
       alchemy: '',
       walletConnectProjectId: '',

@@ -9,7 +9,7 @@ const { signature } = defineProps({
   signature: Object,
 })
 
-const hexNumber = computed(() => BigInt(signature.address))
+const hexNumber = computed(() => BigInt(signature.signer))
 const checksEditionColorIndex = computed(() => hexNumber.value % 80n)
 const checksEditionColor = computed(() => EDITION_COLORS[checksEditionColorIndex.value])
 </script>

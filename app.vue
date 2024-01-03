@@ -17,8 +17,9 @@
 
 <script setup>
 import '~/styles/index.css'
+const { load } = useSignatures()
 
-
+onMounted(() => load())
 </script>
 
 
