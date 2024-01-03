@@ -1,7 +1,11 @@
 <template>
   <ListCard>
     <p>{{ signatureCount }} signatures</p>
-    <p><CountDown :until="ORIGINALS_DEPLOYMENT_ANNIVERSARY" class="inline" /> left</p>
+    <p>
+      <CountDown :until="ORIGINALS_DEPLOYMENT_ANNIVERSARY" class="inline">
+        left
+      </CountDown>
+    </p>
   </ListCard>
 </template>
 
