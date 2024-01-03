@@ -1,8 +1,8 @@
 <template>
   <div class="checks-stream">
     <CheckListItem
-      v-for="(signature, index) in signatures"
-      :key="index"
+      v-for="signature in signatures"
+      :key="signature.cid"
       :signature="signature"
       :active="activeSignature?.cid === signature.cid"
       @click="() => activate(signature)"
