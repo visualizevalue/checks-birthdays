@@ -1,5 +1,5 @@
 <template>
-  <footer @click.stop.prevent="sign" :class="{ connected: isConnected }">
+  <footer v-if="show" @click.stop.prevent="sign" :class="{ connected: isConnected }">
     <Icon type="check" :style="{ color: isConnected && addressToChecksColor(address) }" />
 
     <div v-if="isConnected">
@@ -15,6 +15,15 @@
 </template>
 
 <script setup>
+import { useIntervalFn } from '@vueuse/core'
+import { isOngoing } from '~/utils/dates'
+
+const show = ref(isOngoing())
+
+useIntervalFn(() => {
+  show.value = isOngoing()
+}, 1000)
+
 const { address, isConnected } = useAccount()
 
 const emit = defineEmits(['signed'])

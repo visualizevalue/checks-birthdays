@@ -1,0 +1,4 @@
+export const ORIGINALS_DEPLOYMENT_ANNIVERSARY = 1707771600
+
+export const isOngoing = () => (Date.now() / 1000) < ORIGINALS_DEPLOYMENT_ANNIVERSARY
+

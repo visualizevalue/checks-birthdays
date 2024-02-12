@@ -1,9 +1,9 @@
 <template>
   <Transition name="fade" appear>
     <ListCard v-if="! signaturesLoading">
-      <p>{{ totalSignaturesCount }} signatures</p>
-      <p>
-        <CountDown :until="ORIGINALS_DEPLOYMENT_ANNIVERSARY" class="inline">
+      <p>Signed by {{ totalSignaturesCount }} people</p>
+      <p v-if="show">
+        <CountDown @complete="show = false" :until="ORIGINALS_DEPLOYMENT_ANNIVERSARY" class="inline">
           left
         </CountDown>
       </p>
@@ -12,7 +12,9 @@
 </template>
 
 <script setup>
-const ORIGINALS_DEPLOYMENT_ANNIVERSARY = 1707771600
+import { ORIGINALS_DEPLOYMENT_ANNIVERSARY, isOngoing } from '~/utils/dates'
+
+const show = ref(isOngoing())
 </script>
 
 <style lang="postcss" scoped>
