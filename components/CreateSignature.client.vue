@@ -3,7 +3,9 @@
     <Icon type="check" :style="{ color: isConnected && addressToChecksColor(address) }" />
 
     <div v-if="isConnected">
-      <Address :address="address" />
+      <Account :address="address" v-slot:default="{ display }">
+        <span>{{ display }}</span>
+      </Account>
     </div>
 
     <div v-else>
@@ -15,6 +17,7 @@
 </template>
 
 <script setup>
+import { useAccount } from '@wagmi/vue'
 import { useIntervalFn } from '@vueuse/core'
 import { isOngoing } from '~/utils/dates'
 

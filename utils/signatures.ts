@@ -2,7 +2,7 @@ import { signTypedData, type SignTypedDataArgs } from '@wagmi/core'
 import { EDITION_COLORS } from './colors'
 
 export const ACTION = 'sign'
-export const OBJECT = 'https://birthday.checks.art'
+export const OBJECT = 'https://birthday.checks.art?y=2'
 export const QUERY_FILTERS = `filters%5Bobject%5D=${OBJECT}&filters%5Baction%5D=%26sign`
 
 // FIXME: Extract into a library
@@ -33,8 +33,12 @@ export const notabilityCheck712Definition = (subject: string[], action: string, 
   }
 }
 
-export const signChecksBirthday = async (subject: string) =>
-  await signTypedData(notabilityCheck712Definition([subject], ACTION, OBJECT))
+export const signChecksBirthday = async (config, subject: string) => {
+  return await signTypedData(
+    config,
+    notabilityCheck712Definition([subject], ACTION, OBJECT)
+  )
+}
 
 export const signaturesLoading = ref(true)
 export const signatures = ref([])

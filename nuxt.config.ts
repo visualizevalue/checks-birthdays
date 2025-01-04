@@ -1,6 +1,7 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   devtools: { enabled: true },
+
   app: {
     head: {
       title: 'Birthday Check',
@@ -32,6 +33,7 @@ export default defineNuxtConfig({
       ],
     }
   },
+
   runtimeConfig: {
     public: {
       signatureApi: 'https://api.signature.vv.xyz/v1',
@@ -43,14 +45,10 @@ export default defineNuxtConfig({
       chainId: '1',
     },
   },
-  $development: {
-    extends: [
-      import.meta.env.NUXT_VVEB3_LINK,
-    ],
-  },
-  $production: {
-    extends: [
-      'github:visualizevalue-dev/vveb3-layer',
-    ],
-  },
+
+  extends: [
+    '@visualizevalue/vveb3-layer',
+  ],
+
+  compatibilityDate: '2025-01-03',
 })

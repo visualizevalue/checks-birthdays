@@ -30,8 +30,10 @@
 </template>
 
 <script setup>
+import { useAccount } from '@wagmi/vue'
 import { ACTION, OBJECT } from '~/utils/signatures'
 
+const { $wagmi } = useNuxtApp()
 const config = useRuntimeConfig()
 const emit = defineEmits(['signed'])
 
@@ -73,7 +75,7 @@ const sign = async () => {
     signing.value = true
     requesting.value = true
 
-    signature.value = await signChecksBirthday(address.value)
+    signature.value = await signChecksBirthday($wagmi, address.value)
 
     requesting.value = false
     publishing.value = true

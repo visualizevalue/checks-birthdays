@@ -3,7 +3,7 @@
     <ListCard v-if="activeSignature" :key="activeSignature.cid">
       <Icon type="check" :style="{ color: addressToChecksColor(activeSignature.signer) }" />
 
-      <p><Address :address="activeSignature?.signer" /></p>
+      <p><Account :address="activeSignature?.signer" /></p>
       <p>{{ mintCount }} mints</p>
       <p>
         {{ migrationCount }} migrations
@@ -39,7 +39,7 @@ const compositeCount = computed(() => accountStats.value?.numberOfComposites || 
 const firstMigrationDay = computed(() => accountStats.value?.firstMigrationDay || false)
 </script>
 
-<style lang="postcss" scoped>
+<style scoped>
 aside {
   display: none;
 
